@@ -1,19 +1,15 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Application.Orders.Commands.DeleteOrder
 {
-    public class Order
+    public class DeleteOrderCommand:IRequest
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public string? Adress { get; set; }
-        public string? Created { get; set; }
-
-        public string? Note { get; set; }
-
     }
 }

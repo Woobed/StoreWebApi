@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Persistance
 {
-    public class ApplacationDbContext :DbContext, IApplicationDbContext
+    public class ApplicationDbContext :DbContext, IApplicationDbContext
     {
         public DbSet<Order> orders { get; set; }
 
-        public ApplacationDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }
