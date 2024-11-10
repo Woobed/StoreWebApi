@@ -21,6 +21,7 @@ namespace Application.Orders.Commands.CreateOrder
                 Id = Guid.NewGuid(),
                 UserId = request.UserId,
                 Note = request.Note,
+                Price = request.Price,
                 Created = DateTime.UtcNow.ToString("dd-MM-yyyy HH.mm.ss"),
                 Adress = request.Adress
             };

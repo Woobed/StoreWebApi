@@ -25,6 +25,7 @@ namespace Application.Orders.Commands.UpdateOrder
             entity.UserId = request.UserId;
             entity.Adress= request.Adress;
             entity.Note= request.Note;
+            entity.Price= request.Price;
 
 
             await _dbContext.SaveChangesAsync(cancellationToken);

@@ -13,6 +13,8 @@ namespace Application.Orders.Commands.UpdateOrder
         public Guid UserId { get; set; }
         public string? Note {  get; set; }
 
+        public decimal Price { get; set; }
+
         public string? Adress { get; set; }
 
     }
