@@ -18,7 +18,7 @@ namespace WebApi.Controllers
             return Ok(vm);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteOrderCommand
@@ -26,7 +26,7 @@ namespace WebApi.Controllers
                 Id = id
             };
             await Mediator.Send(command);
-            return Ok();
+            return NoContent();
         }
     }
 }
