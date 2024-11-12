@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
 namespace WebApi.Controllers
@@ -9,8 +10,12 @@ namespace WebApi.Controllers
     public abstract class BaseController : ControllerBase
     {
         private IMediator? _mediator;
-        protected IMediator? Mediator =>
-            _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+        protected IMediator? Mediator;
+        protected BaseController(IMediator mediator)
+        {
+            Mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        }
+        
 
         public Guid _userId => !User.Identity.IsAuthenticated 
             ? Guid.Empty 

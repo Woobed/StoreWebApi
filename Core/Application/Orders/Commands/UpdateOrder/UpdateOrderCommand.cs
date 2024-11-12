@@ -2,7 +2,7 @@
 
 namespace Application.Orders.Commands.UpdateOrder
 {
-    public class UpdateOrderCommand :IRequest
+    public class UpdateOrderCommand :IRequest<Guid>
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }

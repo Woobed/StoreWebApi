@@ -8,7 +8,7 @@ namespace Application.Orders.Queries.GetOrderList
     {
         public Guid Id { get; set; }
 
-        public string Adress { get; set; }
+        public string? Adress { get; set; }
         public decimal Price { get; set; }
 
         public void Mapping(Profile profile)

@@ -3,6 +3,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Application.Orders.Commands;
 
 namespace Application.Orders.Queries.GetOrderList
 {

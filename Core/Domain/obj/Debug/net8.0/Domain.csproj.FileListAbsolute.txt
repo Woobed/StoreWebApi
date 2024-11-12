@@ -1,0 +1,15 @@
+D:\CsDev\StoreWebApi\Core\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\CsDev\StoreWebApi\Core\Domain\bin\Debug\net8.0\Domain.dll
+D:\CsDev\StoreWebApi\Core\Domain\bin\Debug\net8.0\Domain.pdb
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.dll
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.pdb
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\ref\Domain.dll
+D:\CsDev\StoreWebApi\Core\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\CsDev\StoreWebApi\Core\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache

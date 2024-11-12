@@ -1,9 +1,11 @@
 using Application;
 using Application.Common.Mapping;
 using Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Persistance;
+using System.Configuration;
 using System.Reflection;
 
 namespace WebApi
@@ -14,12 +16,40 @@ namespace WebApi
         {
 
             var builder = WebApplication.CreateBuilder(args);
-            var app = builder.Build();
+            
 
             var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
             var configuration = configBuilder.Build();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
+            
+            builder.Services.AddAutoMapper(config =>
+            {
+                config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+                config.AddProfile(new AssemblyMappingProfile(typeof(IApplicationDbContext).Assembly));
+            });
+
+            builder.Services.AddPresistance(configuration);
+            builder.Services.AddApplication();
+            builder.Services.AddControllers();
+
+            ////
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyMethod();
+                    policy.AllowAnyHeader();
+                    policy.AllowAnyOrigin();
+                });
+            });
+            ////
+            ///
+            var app = builder.Build();
 
 
             using (var scope = app.Services.CreateScope())
@@ -30,30 +60,17 @@ namespace WebApi
                     var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
                     Initializer.Initialize(context);
                 }
-                catch
+                catch (Npgsql.PostgresException ex)
                 {
-                    throw new Exception(" // ");
+                    Console.WriteLine(ex.Message);
                 }
             }
-            builder.Services.AddAutoMapper(config =>
-            {
-                config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-                config.AddProfile(new AssemblyMappingProfile(typeof(IApplicationDbContext).Assembly));
-            });
-            
-            builder.Services.AddPresistance(configuration);
-            builder.Services.AddApplication();
-            builder.Services.AddCors(options=>{
-                options.AddPolicy("AllowAll", policy =>
-                {
-                    policy.AllowAnyMethod();
-                    policy.AllowAnyHeader();
-                    policy.AllowAnyOrigin():
-                })
-            });
+            app.UseRouting();
+            app.UseHttpsRedirection();
+            app.UseCors("AllowAll");
+            app.MapControllers();
 
-
-            app.MapGet("/", () => "Hello World!");
+            //app.MapGet("/", () => "Hello World!");
 
             app.Run();
         }

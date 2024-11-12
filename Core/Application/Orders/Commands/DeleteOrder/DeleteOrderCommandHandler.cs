@@ -16,7 +16,7 @@ namespace Application.Orders.Commands.DeleteOrder
             var entity = await _dbContext.orders.FindAsync(command.Id
             , cancellationToken);
 
-            if (entity == null)
+            if (entity == null || entity.UserId!= command.UserId)
             {
                 throw new NotFoundException(nameof(Order), command.Id);
             }
